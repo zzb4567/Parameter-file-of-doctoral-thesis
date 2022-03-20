@@ -1,0 +1,48 @@
+define              = -DPOSRES
+integrator          = md
+dt                  = 0.001 ; ps !;according to Bjelkmar P et al
+nsteps              = 100000 ; total 100 ps.
+nstcomm             = 100    ; ours
+nstcalcenergy       = 100    ; ours
+nstxout             = 1000     ; collect data every 1 ps
+nstvout             = 1000
+nstenergy           = 1000
+nstlog              = 1000
+nstlist             = 10 
+ns-type             = grid ;ours
+cutoff-scheme       = Verlet ;according to GROMACS proposal
+vdw-modifier        = force-switch
+rlist               = 1.2 ;according to GROMACS proposal
+rvdw                = 1.2 ;according to Bjelkmar P et al ;according to GROMACS proposal
+rvdw-switch         = 1.0 ;according to Bjelkmar P et al
+coulombtype         = PME ;according to Bjelkmar P et al
+rcoulomb            = 1.2 ;according to Bjelkmar P et al
+DispCorr            = no  ;according to GROMACS proposal
+vdwtype             = cut-off ;according to GROMACS proposal,question?
+fourierspacing      = 0.12
+fourier-nx          = 0
+fourier-ny          = 0
+fourier-nz          = 0
+pme-order           = 4 ;ours
+ewald-rtol          = 1e-5
+; Berendsen temperature coupling is on
+Tcoupl              = v-rescale ;according to Bjelkmar P et al
+tau-t               = 0.1     0.1  ;according to Bjelkmar P et al
+tc-grps             = protein     non-protein
+ref-t               = 310         310
+; Pressure coupling is off
+Pcoupl              = no
+pbc                 = xyz ;according to Bjelkmar P et al
+; Generate velocites is on at 310 K.
+gen-vel             = yes ;ours
+gen-temp            = 310.0 ;ours
+gen-seed            = -1 ;ours 
+; OPTIONS FOR BONDS according to 1omb.pdb tutorial
+constraints              = all-bonds 
+continuation             = no          ; continuation dynamics run
+constraint-algorithm     = lincs        ; holonomic constraints
+lincs-iter               = 1            ; accuracy of LINCS
+lincs-order              = 4            ; also related to accuracy
+
+
+

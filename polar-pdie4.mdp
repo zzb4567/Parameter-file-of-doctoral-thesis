@@ -1,0 +1,40 @@
+;Polar calculation: "yes" or "no"
+polar		= yes
+;=============
+;PSIZE options
+;=============
+cfac 		= 2 ;Factor by which to expand molecular dimensions to get coarsegrid dimensions.
+gridspace 	= 0.4 ;The desired fine mesh spacing (in A)
+fadd 		= 20 ;Amount (in A) to add to molecular dimensions to get fine grid dimensions.
+gmemceil 	= 8000 ;Maximum memory (in MB) available per-processor for a calculation.
+;=============================================
+;APBS kwywords for polar solvation calculation
+;=============================================
+pcharge 	= 1 ;Charge of positive ions
+prad		= 0.95 ;Radius of positive charged ions  
+pconc       = 0.15 ;Concentration of positive charged ions
+ncharge 	= -1 ;Charge of negative ions
+nrad		= 1.81 ;Radius of negative charged ions
+nconc 	= 0.15 ;Concentration of negative charged ions
+pdie 		= 4 ;Solute dielectric constant
+sdie 		= 80 ;Solvent dielectric constant
+vdie 		= 1 ;Reference or vacuum dielectric constant
+srad 		= 1.4 ;Solvent probe radius
+chgm        = spl4 ;Method used to map biomolecular charges on grid. chgm = spl0 or spl2 or spl4 
+srfm            = smol ;Model used to construct dielectric and ionic boundary. srfm = smol or spl2 or spl4 
+swin 		= 0.30 ;Value for cubic spline window. Only used in case of srfm = spl2 or spl4.
+sdens 	= 10 ;Numebr of grid point per A^2. Not used when (srad = 0.0) or (srfm = spl2 or spl4)
+temp 		= 310 ;Temperature in K
+bcfl 		= mdh ;Type of boundary condition to solve PB equation. bcfl = zero or sdh or mdh or focus or map
+PBsolver 	= npbe ;Non-linear (npbe) or linear (lpbe) PB equation to solve
+;========================================================
+;APBS kwywords for Apolar/Non-polar solvation calculation
+;========================================================
+;Non-polar solvation calculation: "yes" or "no"
+apolar		= yes
+;Repulsive contribution to Non-polar 
+;===SASA model ====
+;Gamma (Surface Tension) kJ/(mol A^2)
+gamma           = 0.0226778
+sasrad          = 1.4 ;Probe radius for SASA (A)
+sasaconst       = 3.84928 ;Offset (c) kJ/mol
